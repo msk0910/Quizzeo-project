@@ -105,7 +105,7 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
 
-                <li><a href="register.php">S'inscrire</a></li>
+                <li><a href="form-handler.php">S'inscrire</a></li>
             </ul>
         </nav>
         <h1>Bienvenue sur QUIZZEO</h1>
