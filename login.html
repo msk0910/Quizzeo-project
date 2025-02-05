@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzeo - Connexion</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Connexion</h1>
+            <p>Accédez à votre compte pour créer des quiz.</p>
+            <form action="authenticate.php" method="POST">
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required> 
+                <button type="submit" class="btn-primary">Se connecter</button>
+            </form>
+            <p><a href="#">Mot de passe oublié ?</a></p>
+            <p>Pas encore de compte ? <a href="form-handler.php">Inscrivez-vous</a></p>
+        </div>
+    </div>
+</body>
+</html>
