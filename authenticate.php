@@ -10,32 +10,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Vérification du CAPTCHA
     if ($captcha == $num1 + $num2) {
-        // Connexion à la base de données
-        $conn = new mysqli('localhost', 'username', 'password', 'database');
+        // Exemple : Vérifier les informations de connexion (sans base de données)
+        $valid_username = "admin";  // Nom d'utilisateur valide
+        $valid_password = "password";  // Mot de passe valide
 
-        // Vérification de la connexion
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Préparer et exécuter la requête SQL
-        $sql = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-        $sql->bind_param('ss', $username, $password);
-        $sql->execute();
-        $result = $sql->get_result();
-
-        if ($result->num_rows > 0) {
+        // Vérification des informations de connexion
+        if ($username == $valid_username && $password == $valid_password) {
             $_SESSION['loggedin'] = true;
             header('Location: index.php');
             exit;
         } else {
             echo "Nom d'utilisateur ou mot de passe incorrect.";
         }
-
-        $sql->close();
-        $conn->close();
     } else {
         echo "CAPTCHA incorrect, veuillez réessayer.";
     }
 }
 ?>
+
