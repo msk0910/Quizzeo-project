@@ -7,6 +7,7 @@
 	}
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +51,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="quiz_admin.php">
 							<span class="las la-pencil-alt"></span>
 							<small>QUIZ</small>
 						</a>
@@ -79,12 +80,10 @@
 			<div class="header-content">
 				<div class="header-menu">
 		<!---Partie  en tete personne + menu deconnection---> 
-					<h3>ESPACE ADMIN</h3>
-					<div class="deconnexion">
-						<span class="las la-power-off"></span>
-						<small>Logout</small>
-
-					</div>       
+					<div class="espace_admin">
+						<h3>ESPACE ADMIN / Users</h3>
+					</div>
+					<a href="logout.php" class="btn btn-danger">Logout</a>
 		
 				</div>
 			</div>
@@ -95,7 +94,7 @@
 			
 			<div class="page-header">
 				<h1>Dashboard</h1>
-				<small>Home / Dashboard</small>
+				<small>Admin / Users</small>
 			</div>
 			
 			<div class="page-content">
@@ -179,12 +178,20 @@
 													<?= $user['password']; ?>
 												</td>
 												<td>
-													<h3 class="status_button btn btn-primary btn-sm">
+												<?php 
+													if(($user['status']) == 1){
+														$statut_style = 'btn btn-danger';
+													} else { 
+														$statut_style = 'btn btn-success';
+													}
+													
+													?>
+													<h3 <?php echo 'class="status_button btn btn-primary btn-sm'.$statut_style.'"'; ?>>
 														<?php 
 															if(($user['status']) == 1){
-																echo '<a href="status.php?id='.$user['id_user'].'&status=0">Disable</a>';
+																echo '<a href="status_user.php?id='.$user['id_user'].'&status=0">Disable</a>';
 															} else { 
-																echo '<a href="status.php?id='.$user['id_user'].'&status=1">Enable</a>';
+																echo '<a href="status_user.php?id='.$user['id_user'].'&status=1">Enable</a>';
 															}
 														?>
 													</h3>

@@ -1,9 +1,12 @@
 <?php 
 	session_start();
+	//$_SESSION = $_POST['mdp'];
 	$bdd = new PDO('mysql:host=localhost;dbname=gestion_inf;', 'root','');
 	if(!$_SESSION['mdp']){
 		header('Location: login.php');
 	}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +25,7 @@
 	<title>Modern Admin Dashboard</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 
@@ -40,15 +44,15 @@
 			<div class="side-menu">
 				<ul>
 					<li>
-						<a href="" >
+						<a href="admin.php">
 							<span class="las la-user-alt"></span>
-							<small>Profile</small>
+							<small>Users</small>
 						</a>
 					</li>
 					<li>
-						<a href="" class="active">
-							<span class="las la-home"></span>
-							<small>Dashboard</small>
+						<a href="quiz_admin.php" class="active">
+							<span class="las la-pencil-alt"></span>
+							<small>QUIZ</small>
 						</a>
 					</li>
 					<li>
@@ -74,7 +78,11 @@
 		<header>
 			<div class="header-content">
 				<div class="header-menu">
-		<!---Partie  en tete personne + menu deconnection--->        
+		<!---Partie  en tete personne + menu deconnection---> 
+					<div class="espace_admin">
+						<h3>ESPACE ADMIN / Quiz</h3>
+					</div>
+					<a href="logout.php" class="btn btn-danger">Logout</a>
 		
 				</div>
 			</div>
@@ -85,7 +93,7 @@
 			
 			<div class="page-header">
 				<h1>Dashboard</h1>
-				<small>Home / quiz_admin</small>
+				<small>Admin / Quiz</small>
 			</div>
 			
 			<div class="page-content">
@@ -130,41 +138,54 @@
 									<th>#</th>
 									<th><span class="las la-sort"></span>TITRE</th>
 									<th><span class="las la-sort"></span>DESCRIPTION</th>
-									<th><span class="las la-sort"></span>CATEGORIE</th>
-									<th><span class="las la-sort"></span>AUTHOR</th>
-									<th><span class="las la-sort"></span> STATUS</th>
+									<th><span class="las la-sort"></span>STAGE</th>
+									<th><span class="las la-sort"></span>STATUS</th>
 								</tr>
 							</thead>
 								<tbody>
 
 									<?php 
-										$requete = $bdd->query('SELECT * FROM users');
-										$users = $requete->fetchAll(PDO::FETCH_ASSOC); 
+										$requete = $bdd->query('SELECT * FROM quiz');
+										$quizs = $requete->fetchAll(PDO::FETCH_ASSOC); 
 
-										foreach($users as $user) {
+										foreach($quizs as $quiz) {
 											?>
 											<tr>
-												<td><?= $user['id_user']; ?></td>
+												<td><?= $quiz['id_quiz']; ?></td>
 												<td>
 													<div class="client">
 														<div class="client-img bg-img" style="background-image: url(img/3.png)"></div>
 														<div class="client-info">
-																<h4><?= $user['first_name']; ?> <?= $user['last_name']; ?></h4>
-																<small><?= $user['email']; ?></small>
+															<h4><?= $quiz['titre']; ?> </h4>
 														</div>
 													</div>
 												</td>
 												<td>
-													<?= $user['username']; ?>
+													<?= $quiz['description']; ?>
 												</td>
 												<td>
-													<?= $user['user_role']; ?>
+													5
 												</td>
 												<td>
-													<?= $user['email']; ?>
-												</td>
-												<td>
-													<?= $user['password']; ?>
+												<?php 
+													//echo $quiz['status'];	
+													if(($quiz['status']) == 1){
+														$statut_style = 'btn btn-danger';
+													} else { 
+														$statut_style = 'btn btn-success';
+													}
+													
+													?>
+													<h3 <?php echo 'class="status_button btn btn-primary btn-sm'.$statut_style.'"'; ?>>
+														<?php 
+															if(($quiz['status']) == 1){
+																echo '<a href="status_quiz.php?id='.$quiz['id_quiz'].'&status=0">Disable</a>';
+															} else { 
+																echo '<a href="status_quiz.php?id='.$quiz['id_quiz'].'&status=1">Enable</a>';
+															}
+														?>
+													</>
+													</h3>
 												</td>
 											</tr>
 											<?php
