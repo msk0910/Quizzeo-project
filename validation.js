@@ -1,11 +1,10 @@
-const form = document.querySelector('form');
+/*const form = document.querySelector('form');
 const passwordField = document.getElementById('password');
 const confirmPasswordField = document.getElementById('confirm_password');
 const emailField = document.getElementById('email');
-const submitButton = document.getElementById('submit'); // S'assurer que l'ID est correct
+const submitButton = document.getElementById('submit');
 let errorsContainer = document.querySelector('.errors');
 
-// Vérifier si le bouton submit existe dans le DOM
 if (submitButton) {
     function validateForm() {
         let errors = [];
@@ -25,19 +24,18 @@ if (submitButton) {
         if (errors.length > 0) {
             errorsContainer.innerHTML = `<ul>${errors.map(error => `<li>${error}</li>`).join('')}</ul>`;
             errorsContainer.style.color = 'red';
-            submitButton.disabled = true; // Désactivation du bouton submit
+            submitButton.disabled = true; 
         } else {
-            errorsContainer.innerHTML = ""; // Effacer les erreurs
-            submitButton.disabled = false; // Activation du bouton submit
+            errorsContainer.innerHTML = ""; 
+            submitButton.disabled = false; 
         }
     }
 
-    // Validation en temps réel lors des changements dans les champs
     passwordField.oninput = validateForm;
     confirmPasswordField.oninput = validateForm;
     emailField.oninput = validateForm;
 } else {
     //console.error("Le bouton submit n'a pas été trouvé dans le DOM.");
-}
+}*/
 
 

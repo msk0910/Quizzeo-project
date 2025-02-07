@@ -78,7 +78,7 @@
 		<header>
 			<div class="header-content">
 				<div class="header-menu">
-		<!---Partie  en tete personne + menu deconnection---> 
+
 					<div class="espace_admin">
 						<h3>ESPACE ADMIN / Quiz</h3>
 					</div>
@@ -97,7 +97,7 @@
 			</div>
 			
 			<div class="page-content">
-		 		<!---Barre de pourcentage des different éléments de mon site ---->
+		 		
 				<div class="analytics">
 
 					<div class="card">
@@ -133,7 +133,7 @@
 					<div>
 						<table width="100%">
 							<thead>
-								<!---------Les en-tetes de mon tableau-------->
+								
 								<tr>
 									<th>#</th>
 									<th><span class="las la-sort"></span>TITRE</th>
@@ -168,7 +168,7 @@
 												</td>
 												<td>
 												<?php 
-													//echo $quiz['status'];	
+												
 													if(($quiz['status']) == 1){
 														$statut_style = 'btn btn-danger';
 													} else { 

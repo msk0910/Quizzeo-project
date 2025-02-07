@@ -9,29 +9,27 @@ if (isset($_POST['valider'])) {
         $pseudo_defaut = "root@admin";
         $mdp_defaut = "gueule";
 
-        // Éviter l'injection HTML
         $pseudo = htmlspecialchars($_POST['pseudo']); 
         $mdp = $_POST['mdp'];
 
-        //reccupération d'une variable en session
         $_SESSION['mdp'] = $mdp;
     
-        //var_dump($_SESSION['mdp']);
 
-        // Vérifier si les identifiants sont corrects
         if ($pseudo_defaut == $pseudo && $mdp_defaut == $mdp) {
             header('Location: admin.php');
-            exit(); //Arrêter l'exécution après la redirection
+            exit(); 
+            //Arrêter l'exécution après la redirection
         } elseif($pseudo_defaut !== $pseudo && $mdp_defaut !== $mdp) {
             $pseudo = ($_POST['pseudo']);
             $password = ($_POST['mdp']);
             //echo "$password";
+            //preparation de la reuqete pour la reccuperation des donnees depuis la bas de données
             $requete = $bdd->prepare("SELECT * FROM users WHERE email= ? AND  password= ? AND status = ?");
             $requete->execute(array($pseudo,$password,1));
             $cpt = $requete->rowCount();
 
 
-
+            //Verification du statut du compte
             $requetesec = $bdd->prepare("SELECT * FROM users WHERE email= ? AND  password= ?");
             $requetesec->execute(array($pseudo,$password));
             $cptsec = $requetesec->rowCount();
@@ -46,8 +44,8 @@ if (isset($_POST['valider'])) {
                 if($user['user_role'] == 'Entreprise'){
                     header("Location: entreprise/ent_dash.php");
                 }
-                if($user['user_role'] == 'Utilisateur Simple'){
-                    //header("Location: ");
+                if($user['user_role'] == 'Utilisateur simple'){
+                    header("Location: autres/quizz.php");
                 }
 
             } elseif($cpt == 0 && $cptsec == 1) {

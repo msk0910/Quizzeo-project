@@ -1,8 +1,8 @@
 <?php 
-	/*session_start();
+	session_start();
     if(!$_SESSION['mdp']){
 		header('Location: login.php');
-	}*/
+	}
 
 ?>
 
@@ -32,7 +32,7 @@
         <section class="dashboard">
             <h1>Tableau de bord - École</h1>
             <p>Bienvenue sur votre espace administrateur. Gérez vos quiz en toute simplicité.</p>
-            <button class="btn-primary" onclick="location.href='create-quiz.html'">➕ Créer un nouveau Quiz</button>
+            <button class="btn-primary" onclick="location.href='ecole/quiz_form.php'">➕ Créer un nouveau Quiz</button>
             <h2>Vos Quiz</h2>
             <table>
                 <thead>

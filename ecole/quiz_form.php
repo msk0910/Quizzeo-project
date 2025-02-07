@@ -16,7 +16,7 @@
         <h1>📝 Créer votre Quiz</h1>
         <p>Complétez le formulaire ci-dessous pour ajouter vos questions et réponses.</p>
 
-        <form action="enregistrer.php" method="POST">
+        <form action="../autres/enregistrer.php" method="POST">
             
             <div class="input-group">
                 <label for="titre">📌 Titre du Quiz :</label>

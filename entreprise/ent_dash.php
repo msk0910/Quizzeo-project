@@ -1,8 +1,9 @@
 <?php 
-	/*session_start();
+	session_start();
     if(!$_SESSION['mdp']){
 		header('Location: login.php');
-	}*/
+	}
+    
 
 ?>
 

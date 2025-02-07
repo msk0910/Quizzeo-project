@@ -1,3 +1,12 @@
+<?php 
+	session_start();
+    if(!$_SESSION['mdp']){
+		header('Location: login.php');
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,7 +26,7 @@
     <ul> 
         <li><a href="entreprise.php">Tableau de bord</a></li>
         <li><a href="quizz.html">Créer un quiz</a></li>
-        <li><a href="#">Déconnexion</a></li>
+        <li><a href="../logout.php">Déconnexion</a></li>
     </ul>
   </div>
   <div id="app-container">

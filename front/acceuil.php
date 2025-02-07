@@ -15,7 +15,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="acceuil.php">Accueil</a></li>
-                <li><a href="#features">Fonctionnalités</a></li>
+                <li><a href="test.php">Fonctionnalités</a></li>
                 <li><a href="ipssi.php">À propos</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="../login.php">Se Connecter</a></li>

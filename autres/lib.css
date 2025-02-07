@@ -138,8 +138,9 @@ ul {
 }
 
 ul li {
-  display: inline;
+  display: block;
   background: #19191e;
+  border-radius: 8px;
 }
 
 ul li a {
@@ -148,6 +149,9 @@ ul li a {
   font-size: 18px;
   font-weight: bold;
   transition: color 0.3s ease;
+  display: block;
+  padding: 10px;
+  background: #422f2f;
 }
 
 ul li a:hover {

@@ -59,12 +59,12 @@ if (isset($_POST['valider'])) {
 
     if (!isset($_SESSION['captcha_result']) || $captcha != $_SESSION['captcha_result']) $errors['captcha'] = "Le CAPTCHA est incorrect.";
 
-    /*if(($password == $confirm_password) && ($captcha != $_SESSION['captcha_result'])){
+    if(($password == $confirm_password) && ($captcha != $_SESSION['captcha_result'])){
         $stmt = $bdd->prepare("INSERT INTO users (last_name, first_name, email, user_role, password) VALUES (?, ?, ?, ?, ?);");
         $stmt->execute([$lastname, $firstname, $email, $roles, $password]);
 
         header("Location: login.php");
-    }*/
+    }
     
 }
 ?>
