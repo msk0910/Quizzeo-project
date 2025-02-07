@@ -138,7 +138,6 @@
 								<tr>
 									<th>#</th>
 									<th><span class="las la-sort"></span> PROFIL</th>
-									<th><span class="las la-sort"></span> USERNAME</th>
 									<th><span class="las la-sort"></span> ACCESS</th>
 									<th><span class="las la-sort"></span> EMAIL</th>
 									<th><span class="las la-sort"></span> PASSWORD</th>
@@ -163,9 +162,6 @@
 																<small><?= $user['email']; ?></small>
 														</div>
 													</div>
-												</td>
-												<td>
-													<?= $user['username']; ?>
 												</td>
 												<td>
 													<?= $user['user_role']; ?>

@@ -30,12 +30,26 @@ if (isset($_POST['valider'])) {
             $requete->execute(array($pseudo,$password,1));
             $cpt = $requete->rowCount();
 
+
+
             $requetesec = $bdd->prepare("SELECT * FROM users WHERE email= ? AND  password= ?");
             $requetesec->execute(array($pseudo,$password));
             $cptsec = $requetesec->rowCount();
-            if($cpt === 1){
-                echo $cpt;
-                echo "Identifiant et mot de passe retrouvé";
+            if($cpt === 1){ 
+                $requete_auth = $bdd->prepare('SELECT user_role FROM users WHERE email = ? AND password = ?');
+                $requete_auth->execute([$pseudo, $password]);
+                $user = $requete_auth->fetch(PDO::FETCH_ASSOC);
+                $_SESSION['password'] = $password;
+                if($user['user_role'] == 'Ecole'){
+                    header("Location: ecole_dash.php");
+                }
+                if($user['user_role'] == 'Entreprise'){
+                    header("Location: entreprise/ent_dash.php");
+                }
+                if($user['user_role'] == 'Utilisateur Simple'){
+                    //header("Location: ");
+                }
+
             } elseif($cpt == 0 && $cptsec == 1) {
                 header("Location: error.php");
                 //exit();
